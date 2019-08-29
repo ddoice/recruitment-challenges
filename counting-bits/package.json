@@ -1,15 +1,20 @@
 {
   "name": "counting-bits",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Payvision recruiting challenge: Counting Bits",
-  "main": "index.js",
+  "main": "benchmarks.js",
   "scripts": {
-    "test": "mocha PositiveBitCounter.test.js",
-    "lint": "eslint ."
+    "test": "mocha specs/*.test.js",
+    "coverage": "nyc mocha specs/*.test.js",
+    "postcoverage": "echo Due to my lack of experience in the TS ecosystem i have not managed (yet) how to test .ts instead of .js files, transpilation makes some code not accesible so coverage is not that great.",
+    "lint": "eslint .",
+    "benchmarks": "NODE_ENV=production node benchmarks.js",
+    "flame": "NODE_ENV=production npx 0x -o benchmarks.js"
   },
   "author": "Diego T. <d.torres@payvision.com>",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^12.7.2",
     "eslint": "^4.15.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-import": "^2.8.0",
@@ -17,6 +22,10 @@
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "mocha": "^4.1.0",
-    "standard": "^10.0.3"
+    "standard": "^10.0.3",
+    "nyc": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=10"
   }
 }
